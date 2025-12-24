@@ -30,7 +30,10 @@ h1 {
 }
 
 .btn {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
     width: 100%;
     padding: 16px;
     margin-bottom: 18px;
@@ -38,7 +41,6 @@ h1 {
     color: #fff;
     text-decoration: none;
     border-radius: 12px;
-    position: relative;
     animation: pulse 1.4s infinite;
 }
 
@@ -48,6 +50,12 @@ h1 {
 
 .whatsapp {
     background: #25D366;
+}
+
+.icon {
+    width: 22px;
+    height: 22px;
+    fill: #fff;
 }
 
 @keyframes pulse {
@@ -73,36 +81,59 @@ h1 {
 </style>
 
 <script>
-function openExternal(url) {
-    // открытие именно во внешнем браузере
-    window.location.href = url;
-}
+const texts = {
+    en: {
+        title: "Choose how to contact",
+        tg: "Open Telegram",
+        wa: "Open WhatsApp",
+        note: "Tap the button to continue"
+    },
+    ru: {
+        title: "Выберите способ связи",
+        tg: "Открыть Telegram",
+        wa: "Открыть WhatsApp",
+        note: "Нажмите кнопку, чтобы продолжить"
+    }
+};
+
+const lang = navigator.language.startsWith('ru') ? 'ru' : 'en';
+
+window.onload = () => {
+    document.getElementById('title').innerText = texts[lang].title;
+    document.getElementById('tgText').innerText = texts[lang].tg;
+    document.getElementById('waText').innerText = texts[lang].wa;
+    document.getElementById('note').innerText = texts[lang].note;
+};
 </script>
 </head>
 
 <body>
 <div class="container">
-    <h1>Choose how to contact</h1>
+    <h1 id="title"></h1>
 
     <!-- TELEGRAM -->
     <a class="btn telegram"
        href="https://t.me/me9fun"
        target="_blank"
        rel="noopener">
-       Open Telegram
+        <svg class="icon" viewBox="0 0 24 24">
+            <path d="M9.04 15.47l-.39 5.52c.56 0 .8-.24 1.1-.53l2.64-2.5 5.47 4c1 .55 1.7.26 1.95-.92l3.54-16.6c.32-1.5-.54-2.08-1.52-1.7L1.6 9.37c-1.46.56-1.44 1.36-.26 1.72l5.56 1.73L19.8 5.37c.7-.43 1.35-.2.82.23"/>
+        </svg>
+        <span id="tgText"></span>
     </a>
 
     <!-- WHATSAPP -->
     <a class="btn whatsapp"
-       href="https://www.whatsapp.com/channel/0029Vb53zUDDJ6H43vLiBc2B"
+       href="https://whatsapp.com/channel/0029Vb53zUDDJ6H43vLiBc2B"
        target="_blank"
        rel="noopener">
-       Open WhatsApp
+        <svg class="icon" viewBox="0 0 24 24">
+            <path d="M20.52 3.48A11.86 11.86 0 0012.01 0C5.38 0 0 5.38 0 12c0 2.12.55 4.18 1.6 6.01L0 24l6.15-1.6A11.9 11.9 0 0012.01 24C18.63 24 24 18.62 24 12a11.86 11.86 0 00-3.48-8.52z"/>
+        </svg>
+        <span id="waText"></span>
     </a>
 
-    <div class="note">
-        Tap the button to continue
-    </div>
+    <div class="note" id="note"></div>
 </div>
 </body>
 </html>
