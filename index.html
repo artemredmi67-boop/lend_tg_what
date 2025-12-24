@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Contact</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.container {
+    width: 100%;
+    max-width: 360px;
+    padding: 20px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 22px;
+    margin-bottom: 25px;
+}
+
+.btn {
+    display: block;
+    width: 100%;
+    padding: 16px;
+    margin-bottom: 18px;
+    font-size: 18px;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 12px;
+    position: relative;
+    animation: pulse 1.4s infinite;
+}
+
+.telegram {
+    background: #229ED9;
+}
+
+.whatsapp {
+    background: #25D366;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(0,0,0,0.25);
+    }
+    70% {
+        transform: scale(1.05);
+        box-shadow: 0 0 0 14px rgba(0,0,0,0);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(0,0,0,0);
+    }
+}
+
+.note {
+    font-size: 13px;
+    color: #777;
+    margin-top: 10px;
+}
+</style>
+
+<script>
+function openExternal(url) {
+    // открытие именно во внешнем браузере
+    window.location.href = url;
+}
+</script>
+</head>
+
+<body>
+<div class="container">
+    <h1>Choose how to contact</h1>
+
+    <!-- TELEGRAM -->
+    <a class="btn telegram"
+       href="https://t.me/me9fun"
+       target="_blank"
+       rel="noopener">
+       Open Telegram
+    </a>
+
+    <!-- WHATSAPP -->
+    <a class="btn whatsapp"
+       href="https://www.whatsapp.com/channel/0029Vb53zUDDJ6H43vLiBc2B"
+       target="_blank"
+       rel="noopener">
+       Open WhatsApp
+    </a>
+
+    <div class="note">
+        Tap the button to continue
+    </div>
+</div>
+</body>
+</html>
