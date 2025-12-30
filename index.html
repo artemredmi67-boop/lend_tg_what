@@ -51,7 +51,7 @@ h1 {
 }
 
 .buttons {
-    display: none; /* по умолчанию скрыты */
+    display: none; /* скрыты по умолчанию */
 }
 
 .btn {
@@ -117,7 +117,7 @@ const texts = {
         tg: "Telegram",
         wa: "WhatsApp",
         note: "Tap the button to continue",
-        desktop: "Open this page on your phone"
+        blocked: "This page is available only on Android or iOS"
     },
     ru: {
         title: "Выберите, как продолжить",
@@ -125,14 +125,16 @@ const texts = {
         tg: "Telegram",
         wa: "WhatsApp",
         note: "Нажмите кнопку, чтобы продолжить",
-        desktop: "Откройте эту страницу с телефона"
+        blocked: "Эта страница доступна только на Android или iOS"
     }
 };
 
 const lang = navigator.language.startsWith('ru') ? 'ru' : 'en';
 
-/* определение мобилки / планшета */
-const isMobile = /Android|iPhone|iPad|iPod|Opera Mini|IEMobile/i.test(navigator.userAgent);
+/* ЖЁСТКАЯ ПРОВЕРКА ТОЛЬКО Android / iOS */
+const ua = navigator.userAgent || navigator.vendor || window.opera;
+const isAndroid = /Android/i.test(ua);
+const isIOS = /iPhone|iPad|iPod/i.test(ua);
 
 window.onload = () => {
     document.getElementById('title').innerText = texts[lang].title;
@@ -140,11 +142,11 @@ window.onload = () => {
     document.getElementById('tgText').innerText = texts[lang].tg;
     document.getElementById('waText').innerText = texts[lang].wa;
 
-    if (isMobile) {
+    if (isAndroid || isIOS) {
         document.querySelector('.buttons').style.display = 'block';
         document.getElementById('note').innerText = texts[lang].note;
     } else {
-        document.getElementById('note').innerText = texts[lang].desktop;
+        document.getElementById('note').innerText = texts[lang].blocked;
     }
 };
 </script>
